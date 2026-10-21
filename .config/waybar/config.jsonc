@@ -1,0 +1,63 @@
+{
+  "layer": "top",
+  "position": "top",
+  "height": 26,
+  "spacing": 0,
+
+  "modules-left": ["sway/workspaces", "sway/mode", "custom/media"],
+  "modules-center": ["clock"],
+  "modules-right": ["temperature", "pulseaudio", "battery"],
+
+  "sway/workspaces": {
+    "disable-scroll": true,
+    "all-outputs": true,
+    "format": "{name}"
+  },
+
+  "sway/mode": {
+    "format": "{}"
+  },
+
+  "clock": {
+    "format": "{:%a %d %b  %H:%M}",
+    "tooltip-format": "<tt>{calendar}</tt>"
+  },
+
+  "custom/media": {
+    "format": "{text}",
+    "exec": "playerctl metadata --format '{{artist}} - {{title}}' | cut -c 1-30 | jq -Rsc '{text: rtrimstr(\"\\n\")}'",
+    "return-type": "json",
+    "interval": 2,
+    "on-click": "playerctl play-pause",
+    "on-click-right": "playerctl next",
+    "on-click-middle": "playerctl previous"
+  },
+
+  "temperature": {
+    "hwmon-path": "/sys/class/hwmon/hwmon5/temp1_input",
+    "format": "CPU {temperatureC}°C ",
+    "format-critical": "{temperatureC}°C",
+    "critical-threshold": 90,
+    "interval": 5,
+    "tooltip": false
+  },
+
+  "pulseaudio": {
+    "format": "vol {volume}%",
+    "format-muted": "vol muted",
+    "scroll-step": 5,
+    "on-click": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+    "tooltip": false
+  },
+
+  "battery": {
+    "states": {
+      "warning": 25,
+      "critical": 10
+    },
+    "format": "bat {capacity}%",
+    "format-charging": "bat {capacity}%+",
+    "format-plugged": "bat {capacity}%+",
+    "tooltip-format": "{timeTo}"
+  }
+}
