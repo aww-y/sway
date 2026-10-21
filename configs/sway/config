@@ -28,6 +28,14 @@ bindsym $mod+Shift+q kill
 bindsym $mod+Shift+c reload
 bindsym $mod+Shift+e exec wlogout -b 5
 
+
+# floating
+bindsym $mod+Left  move left 20 px
+bindsym $mod+Down  move down 20 px
+bindsym $mod+Up    move up 20 px
+bindsym $mod+Right move right 20 px
+
+
 bindsym $mod+h focus left
 bindsym $mod+j focus down
 bindsym $mod+k focus up
