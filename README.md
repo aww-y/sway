@@ -26,12 +26,7 @@ git clone https://github.com/aww-y/sway.git
 cd sway
 ```
 
-Copy all included configurations into your config directory:
-
-```bash
-mkdir -p ~/.config
-cp -r .config/* ~/.config/
-```
+Copy all included configurations into your config directory
 
 Reload Sway to apply the changes:
 
